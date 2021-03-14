@@ -1,0 +1,106 @@
+body {
+  text-align: center;
+  font-family: arial;
+}
+
+.scoreboard {
+  display: flex;
+}
+
+.header {
+  height: 20px;
+  width: 80px;
+  border-style: solid;
+  border-width: 1px;
+  line-height: 20px;
+  background-color: rgb(240, 237, 153);
+}
+
+.frame {
+  margin-left: -1px;
+}
+
+.scores {
+  height:80px;
+  width: 80px;
+  display: flex;
+  flex-wrap:wrap;
+  border-style: solid;
+  border-width: 1px;
+  margin-top: -1px;
+}
+
+.score1 {
+  height: 50%;
+  width: 50%;
+  margin-top: -1px;
+  margin-left: -1px;
+  line-height: 40px;
+}
+
+.score2 {
+  height: 50%;
+  width: 50%;
+  border-style: solid;
+  border-width: 1px;
+  margin-top: -1px;
+  margin-right: -1px;
+  line-height: 40px;
+}
+
+.score2-1 {
+  height: 50%;
+  width: 25%;
+  border-style: solid;
+  border-width: 1px;
+  margin-top: -1px;
+  margin-left: -1px;
+  margin-right: -1px;
+  line-height: 40px;
+}
+
+.score2-2 {
+  height: 50%;
+  width: 25%;
+  border-style: solid;
+  border-width: 1px;
+  margin-top: -1px;
+  margin-right: -2px;
+  line-height: 40px;
+}
+
+.total {
+  height: 50%;
+  width: 100%;
+  line-height: 40px;
+}
+
+.final-score {
+  line-height: 80px; 
+  width: 100%;
+}
+
+.buttons {
+  width: 870px;
+}
+
+/* button {
+  margin: 1px;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: black;
+  background-color: white;
+  font-weight: bold;
+  font-size: 25px;
+  text-align: center;
+  height: 50px;
+  width: 50px;
+  background: linear-gradient(0deg, white 60%,red 60%, red 80%, white 80%, white 100%);
+  background-repeat: no-repeat;
+  color: #fff;
+  text-shadow: 2px 0 0 #000, 0 -2px 0 #000, 0 2px 0 #000, -2px 0 0 #000;
+} */
+
+button {
+  margin:2px;
+}
