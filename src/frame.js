@@ -1,33 +1,29 @@
 class Frame {
 
   constructor(number, startScore) {
+    this.FRAMES = 10;
     this.number = number;
     this.startScore = startScore;
     this.finishScore = this.startScore + 2;
     this.total = 0;
-    this.score1 = null;
-    this.score2 = null;
+    this.roll1 = null;
+    this.roll2 = null;
+    this.roll3 = null;
   };
 
   isStrikeOrSpare() {
-    if (this.score1 + this.score2 === 10) {
+    if (this.roll1 + this.roll2 === 10) {
       this.finishScore++;
+      this.roll2 === null ? this.roll1 = 'X' : this.roll2 = '/';
       return true;
     } else {
       return false;
     }
   };
 
-  strikeOrSpare() {
-    this.finishScore++;
-  }
-
   setScore(value) {
-    if (this.score1 === null) {
-      this.score1 = value;
-    } else {
-      this.score2 = value;
-    };
+    // (this.roll1 !== null && this.roll2 !== null) ? this.roll3 = value :
+    this.roll1 === null ? this.roll1 = value : this.roll2 = value;
     return this.isStrikeOrSpare();
   };
 
@@ -36,4 +32,4 @@ class Frame {
     return this.total;
   };
 
-}
+};

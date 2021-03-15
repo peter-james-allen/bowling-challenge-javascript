@@ -3,12 +3,9 @@ $(document).ready(function() {
   updateCurrentFrame();
 
   $('.roll').click(function() {
-    game.roll(parseInt($(this).val()))
-    if (game.currentRoll === 1) {
-      enableButtons();
-    } else {
-      disableButtons(parseInt($(this).val()));
-    }
+    let roll = parseInt($(this).val())
+    game.roll(roll)
+    game.currentRoll === 1 ? enableButtons() : disableButtons(roll);
     updateCurrentFrame();
     updateScores();
   });
@@ -29,8 +26,12 @@ $(document).ready(function() {
 
   function updateFrameScore() {
     game.frames.forEach(function(frame) {
-      $(`#frame${frame.number}`).children('.score1').text(frame.score1)
-      $(`#frame${frame.number}`).children('.score2').text(frame.score2)
+      $(`#frame${frame.number}`).children('.score1').text(frame.roll1)
+      $(`#frame${frame.number}`).children('.score2').text(frame.roll2)
+      if (frame.number === 10) {
+        $(`#frame${frame.number}`).children('.score2-1').text(frame.roll2)
+        $(`#frame${frame.number}`).children('.score2-2').text(frame.roll3)
+      }
     })
   }
 
@@ -40,7 +41,7 @@ $(document).ready(function() {
 
   function updateCurrentFrame() {
     $('.scores').css('background-color', 'white')
-    currentFrame = `#frame${game.currentFrame}`
+    currentFrame = `#frame${game.getCurrentFrame().number}`
     $(currentFrame).css('background-color', 'lightblue')
   }
 
