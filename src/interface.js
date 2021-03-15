@@ -1,24 +1,29 @@
 'use_strict'
 
 $(document).ready(function() {
-  let game = new Game;
-  updateCurrentFrame();
+  var game = restart();
 
   $('.roll').click(function() {
     let roll = parseInt($(this).val())
 
-    if (game.roll(roll)) {
+    if (game.roll(roll) === true) {
+      console.log("Game Over")
       finishGame();
-    };
+    } else {;
     game.currentRoll === 1 ? enableButtons() : disableButtons(roll);
     updateCurrentFrame();
     updateScores();
+    };
+  });
+
+  $('.restart-button').click(function() {
+    restart();
   });
 
   function updateScores() {
-    updateFrameScore()
-    updateRunningScore()
-    updateFinalScore()
+    updateFrameScore();
+    updateRunningScore();
+    updateFinalScore();
   };
 
   function updateRunningScore() {
@@ -51,13 +56,13 @@ $(document).ready(function() {
   };
 
   function enableButtons() {
-    $('.roll').prop( "disabled", false )
+    $('.roll').prop( "disabled", false );
   };
 
   function disableButtons(value) {
     if (value !== 10 || value !== 0) {
       for (i = 10; i > 10-value; i--) {
-        $(`#roll${i}`).prop( "disabled", true )
+        $(`#roll${i}`).prop( "disabled", true );
       };
     };
   };
@@ -65,6 +70,25 @@ $(document).ready(function() {
   function finishGame() {
     updateScores();
     $('.roll').prop( "disabled", true );
+    $('.restart').css('display','block');
+  };
+
+  function restart() {
+    $('.restart').css('display','none');
+    $('.roll').prop( "disabled", false );
+    clearScores();
+    game = new Game;
+    updateCurrentFrame();  
+    return game;
+  }
+
+  function clearScores() {
+    $('.score1').text('');
+    $('.score2').text('');
+    $('.score2-1').text('');
+    $('.score2-2').text('');
+    $('.total').text('');
+    $('.final-score').text('');
   };
 
 });

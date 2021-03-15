@@ -31,7 +31,11 @@ class Frame {
   setScoreFinal(value) {
     this.roll1 === null ? this.roll1 = value :
     this.roll2 === null ? this.roll2 = value :
-    this.roll3 !== null ? this.finished = true : this.roll3 = value
+    this.roll3 === null ? this.roll3 = value : false;
+
+    if (this.roll3 !== null) {
+      this.finished = true
+    }
 
     if (this.roll2 !== null && this.roll1 + this.roll2 < 10) {
       this.finished = true;
