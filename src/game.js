@@ -1,6 +1,9 @@
+'use_strict'
+
 class Game {
 
   constructor() {
+    this.FRAMES = 10;
     this.rolls = [];
     this.frames = [new Frame(1,0)];
     this.frameScore = [];
@@ -21,10 +24,12 @@ class Game {
     this.rolls.push(score);
     this.updateScores();
 
-    // if (this.isFinalFrame()) {
-    //   this.getCurrentFrame().setScore(this.getLastRoll())
-
-    if (this.isFrameFinished()) {
+    if (this.isFinalFrame()) {
+      this.getCurrentFrame().setScoreFinal(this.getLastRoll())
+      if (this.getCurrentFrame().finished) {
+        return true;
+      };
+    } else if (this.isFrameFinished()) {
       this.currentRoll = 1;
       this.newFrame();
     } else {
@@ -52,7 +57,7 @@ class Game {
   };
 
   isFinalFrame() {
-    return this.getCurrentFrame().numer === this.FRAMES;
+    return this.getCurrentFrame().number === this.FRAMES;
   };
 
 }

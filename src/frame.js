@@ -1,7 +1,8 @@
+'use_strict'
+
 class Frame {
 
   constructor(number, startScore) {
-    this.FRAMES = 10;
     this.number = number;
     this.startScore = startScore;
     this.finishScore = this.startScore + 2;
@@ -9,6 +10,7 @@ class Frame {
     this.roll1 = null;
     this.roll2 = null;
     this.roll3 = null;
+    this.finished = false;
   };
 
   isStrikeOrSpare() {
@@ -22,9 +24,23 @@ class Frame {
   };
 
   setScore(value) {
-    // (this.roll1 !== null && this.roll2 !== null) ? this.roll3 = value :
     this.roll1 === null ? this.roll1 = value : this.roll2 = value;
     return this.isStrikeOrSpare();
+  };
+
+  setScoreFinal(value) {
+    this.roll1 === null ? this.roll1 = value :
+    this.roll2 === null ? this.roll2 = value :
+    this.roll3 !== null ? this.finished = true : this.roll3 = value
+
+    if (this.roll2 !== null && this.roll1 + this.roll2 < 10) {
+      this.finished = true;
+    }
+
+    if (this.roll1 + this.roll2 === 10) {
+      this.finishScore++;
+    }
+    
   };
 
   score(rollArray) {
