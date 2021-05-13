@@ -20,7 +20,7 @@ Then in the root folder open the file
 
 The score-card will open in your browser and your ready to go. Select the number of pins knocked over. If ou need to restart refresh the page.
 
-##Testing
+## Testing
 Testing is done in jasmine. To run the tests in the root folder open the file
 ```
 .\SpecRunner.html
